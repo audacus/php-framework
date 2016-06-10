@@ -1,0 +1,103 @@
+{
+	"app": {
+		"name": "some application",
+		"defaultcontroller": "index",
+		"date": {
+			"format": {
+				"short": "Y-m-d",
+				"long": "Y-m-d H:i:s"
+			}
+		},
+		"security": {
+			"cookie": {
+				"expire": "30 days"
+			}
+		},
+		"info": {
+			"author": "Carlos Ray Norris",
+			"date": "1940-05-10"
+		},
+		"mail": {
+			"name": "some application mail",
+			"address": "mail@someapplication.mail"
+		},
+		"url": {
+			"https": false,
+			"css": {
+				"default": "scripts/css",
+				"controller": "scripts/css/%s"
+			},
+			"js": {
+				"default": "scripts/js",
+				"controller": "scripts/js/%s"
+			}
+		},
+		"path": {
+			"config": {
+				"default": "default.json",
+				"general": "general.json",
+				"userconfig": {
+					"prefix": "z-"
+				}
+			},
+			"controller": "controller",
+			"lib": "lib",
+			"ext": "lib/ext",
+			"exception": "lib/exception",
+			"model": "model",
+			"mapper": "model/mapper",
+			"images": "images",
+			"public": ".",
+			"view": "view",
+			"viewscripts": {
+				"scripts": "view/scripts",
+				"controller": "view/scripts/%s",
+				"header": "header.php",
+				"content": "content.php",
+				"footer": "footer.php"
+			},
+			"mediafolder": "mediafiles/"
+		},
+		"exception": {
+			"file": "php-exception/AbstractException.php"
+		},
+		"autoloader": {
+			"file": "php-autoloader/Autoloader.php",
+			"class": "Autoloader",
+			"function": "load"
+		},
+		"errorhandler": {
+			"file": "php-error-handler/ErrorHandler.php",
+			"errorfunction": "controller\\Error::error",
+			"exceptionfunction": "controller\\Error::exception"
+		},
+		"rest": {
+			"request": "php-rest-api/RestRequest.php"
+		},
+		"view": {
+			"default": {
+				"render": true,
+				"format": "json"
+			}
+		}
+	},
+	"db": {
+		"host": "localhost",
+		"user": "root",
+		"password": "",
+		"name": "",
+		"filepath": "lib/database",
+		"pdo": {
+			"type": "mysql"
+		},
+		"notorm": {
+			"file": "notorm/NotORM.php",
+			"structure": {
+				"primary": "id",
+				"foreign": "%s_id",
+				"table": "%s",
+				"prefix": ""
+			}
+		}
+	}
+}
