@@ -1,3 +1,4 @@
+<!--content-end-->
 	</div>
 </div>
 <div id="footer">
@@ -15,7 +16,6 @@
 	}
 ?>
 </span>
-</div>
 </div>
 <script type="text/javascript">
 (function() {

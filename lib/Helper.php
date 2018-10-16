@@ -150,35 +150,43 @@ class Helper {
 	}
 
 	public static function getSidebar($role = null) {
-		$sidebarTmp = array();
-		switch ($role) {
-			case \mapper\Role::ADMIN:
-				$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get('app.sidebar.admin'));
-			case \mapper\Role::USER:
-				$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get('app.sidebar.user'));
-			default:
-				$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get('app.sidebar.all'));
-		}
+		$sidebarsProperty = 'app.sidebar';
 		$sidebar = array();
-		foreach ($sidebarTmp as $titleTmp => $itemsTmp) {
-			$title = substr($titleTmp, 4);
-			$keySubpart = substr($titleTmp, 0, 3);
-			$subpart = array();
-			$subpart['title'] = $title;
-			$items = array();
-			foreach ($itemsTmp as $labelTmp => $link) {
-				$label = substr($labelTmp, 4);
-				$keyItem = substr($labelTmp, 0, 3);
-				$items[intval($keyItem)] = array(
-					'label' => $label,
-					'link' => $link
-				);
+		$sidebarTmp = array();
+		$sidebars = \Config::get($sidebarsProperty);
+		if (is_array($sidebars)) {
+			switch ($role) {
+				case \mapper\Role::ADMIN:
+					$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get($sidebarsProperty.'.admin'));
+				case \mapper\Role::USER:
+					$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get($sidebarsProperty.'.user'));
+				default:
+					$sidebarTmp = array_replace_recursive($sidebarTmp, \Config::get($sidebarsProperty.'.all'));
 			}
-			ksort($items);
-			$subpart['items'] = $items;
-			$sidebar[intval($keySubpart)] = $subpart;
+			if (is_array($sidebarTmp)) {
+				foreach ($sidebarTmp as $titleTmp => $itemsTmp) {
+					$title = substr($titleTmp, 4);
+					$keySubpart = substr($titleTmp, 0, 3);
+					$subpart = array();
+					$subpart['title'] = $title;
+					$items = array();
+					foreach ($itemsTmp as $labelTmp => $link) {
+						$label = substr($labelTmp, 4);
+						$keyItem = substr($labelTmp, 0, 3);
+						$items[intval($keyItem)] = array(
+							'label' => $label,
+							'link' => $link
+						);
+					}
+					ksort($items);
+					$subpart['items'] = $items;
+					$sidebar[intval($keySubpart)] = $subpart;
+				}
+				ksort($sidebar);
+			}
+		} else {
+			throw new \Exception("Sidebar is not defined in config");
 		}
-		ksort($sidebar);
 		return $sidebar;
 	}
 }

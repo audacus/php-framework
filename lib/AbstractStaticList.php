@@ -44,7 +44,7 @@ abstract class AbstractStaticList {
 		static::$list = array();
 	}
 
-    public static function size(){
-        return count(static::$list);
-    }
+	public static function size(){
+		return count(static::$list);
+	}
 }

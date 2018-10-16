@@ -1,6 +1,6 @@
 {
 	"app": {
-		"name": "wmpa",
+		"name": "some application",
 		"defaultcontroller": "index",
 		"date": {
 			"format": {
@@ -14,8 +14,8 @@
 			}
 		},
 		"info": {
-			"author": "audacus",
-			"date": "2018-05-29"
+			"author": "Carlos Ray Norris",
+			"date": "1940-05-10"
 		},
 		"mail": {
 			"name": "some application mail",
@@ -79,28 +79,13 @@
 				"render": true,
 				"format": "json"
 			}
-		},
-		"sidebar": {
-			"all": {
-				"100-data": {
-					"080-rank": "rank",
-					"090-person": "person",
-					"095-group": "group",
-					"110-function": "function"
-				},
-				"090-tasks": {
-					"100-groups": "gruops",
-					"090-people": "people",
-					"010-overview": "overview"
-				}
-			}
 		}
 	},
 	"db": {
 		"host": "localhost",
-		"user": "audacus_wmpa",
-		"password": "wmpa",
-		"name": "audacus_wmpa",
+		"user": "root",
+		"password": "",
+		"name": "",
 		"filepath": "lib/database",
 		"pdo": {
 			"type": "mysql"
@@ -109,7 +94,7 @@
 			"file": "notorm/NotORM.php",
 			"structure": {
 				"primary": "id",
-				"foreign": "%s",
+				"foreign": "%s_id",
 				"table": "%s",
 				"prefix": ""
 			}

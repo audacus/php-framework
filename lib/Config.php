@@ -74,6 +74,7 @@ class Config {
 						throw new \Exception('Could not decode config file: '.$configFile);
 					}
 				} else {
+					die($configFile);
 					throw new \FileNotFoundException($configFile);
 				}
 			}
